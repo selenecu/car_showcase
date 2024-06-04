@@ -24,13 +24,13 @@ export default function CustomFilter({ title, options }: CustomFilterProps) {
         value={selected}
         onChange={(e) => {
           setSelected(e); // Update the selected option in state
-          handleUpdateParams(e); // Update the URL search parameters and navigate to the new URL
+          handleUpdateParams; // Update the URL search parameters and navigate to the new URL
         }}
       >
         <div className="relative w-fit z-10">
           {/* Button for the listbox */}
           <Listbox.Button className="custom-filter__btn">
-            <span className="block truncate">{selected.title}</span>
+            <span className="block truncate">{selected}</span>
             <Image
               src="/chevron-up-down.svg"
               width={20}
@@ -50,7 +50,7 @@ export default function CustomFilter({ title, options }: CustomFilterProps) {
               {/* Map over the options and display them as listbox options */}
               {options.map((option) => (
                 <Listbox.Option
-                  key={option.title}
+                  key={option}
                   className={({ active }) =>
                     `relative cursor-default select-none py-2 px-4 ${
                       active ? "bg-primary-blue text-white" : "text-gray-900"
@@ -65,7 +65,7 @@ export default function CustomFilter({ title, options }: CustomFilterProps) {
                           selected ? "font-medium" : "font-normal"
                         }`}
                       >
-                        {option.title}
+                        {option}
                       </span>
                     </>
                   )}

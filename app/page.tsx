@@ -1,4 +1,3 @@
-'use client';
 import { fetchCars } from "@/utils";
 import { HomeProps } from "@/types";
 import { fuels, yearsOfProduction } from "@/constants";
@@ -21,16 +20,16 @@ export default async function Home({ searchParams }: HomeProps) {
 
       <div className='mt-12 padding-x padding-y max-width' id='discover'>
         <div className='home__text-container'>
-          <h1 className='text-4xl font-extrabold'>Catalogo</h1>
-          <p> Explora nuestros modelos</p>
+          <h1 className='text-4xl font-extrabold'>Car Catalogue</h1>
+          <p>Explore out cars you might like</p>
         </div>
 
         <div className='home__filters'>
           <SearchBar />
 
           <div className='home__filter-container'>
-            <CustomFilter title='fuel' options={fuels} />
-            <CustomFilter title='year' options={yearsOfProduction} />
+          <CustomFilter title='fuel' options={fuels.map(({ title }) => title)} />
+<CustomFilter title='year' options={yearsOfProduction.map(({ title }) => title)} />
           </div>
         </div>
 
@@ -49,7 +48,7 @@ export default async function Home({ searchParams }: HomeProps) {
           </section>
         ) : (
           <div className='home__error-container'>
-            <h2 className='text-black text-xl font-bold'>Oops, no hay resultados</h2>
+            <h2 className='text-black text-xl font-bold'>Oops, no results</h2>
             <p>{allCars?.message}</p>
           </div>
         )}
